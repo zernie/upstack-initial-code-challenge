@@ -44,3 +44,7 @@ Using the `json` in the request:
   last_name: 'Smith'
 }
 ```
+
+**Copyright:**
+
+This document is confidential and property of Upstack and shouldn't be shared with anyone
