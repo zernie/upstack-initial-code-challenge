@@ -1,5 +1,6 @@
 describe 'Professors API', type: :request do
   let!(:professor) { create(:professor) }
+  let!(:another_professor) { create(:professor, student_count: 10) }
 
   context 'assign_student' do
     describe 'without matching first_name' do
