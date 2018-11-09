@@ -3,17 +3,19 @@ describe 'Professors API', type: :request do
   let!(:another_professor) { create(:professor, student_count: 10) }
 
   context 'assign_student' do
+    let!(:url) { "/professors/assign_student" }
+
     describe 'without matching first_name' do
       let(:student) {
         {
-            first_name: 'Jane',
-            last_name:  'Doe'
+            first_name: 'John',
+            last_name:  'Smith'
         }
       }
 
       it 'assigns the student to professor' do
         expect {
-          post "/professors/assign_student", params: student
+          post url, params: student
 
           professor.reload
         }.to change { Student.where(match: nil).count }.by(1)
@@ -33,7 +35,7 @@ describe 'Professors API', type: :request do
 
       it 'assigns the student to professor and sets students.match to true' do
         expect {
-          post "/professors/assign_student", params: student
+          post url, params: student
 
           professor.reload
         }.to change { Student.where(match: true).count }.by(1)
