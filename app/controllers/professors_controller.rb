@@ -1,10 +1,9 @@
 class ProfessorsController < ApplicationController
 
   def assign_student
-    professor = Professor.least_students
-    return render_errors('No professors are found.') unless professor
-
-    student = professor.students.build(student_params)
+    professor = Professor.least_students or return render_errors('No professors are found.')
+    student       = professor.students.build(student_params)
+    student.match = true if student.first_name == professor.first_name
 
     if student.save
       render_success
