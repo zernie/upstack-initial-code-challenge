@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181031124604) do
+ActiveRecord::Schema.define(version: 20181109091843) do
 
   create_table "professors", force: :cascade do |t|
     t.string   "first_name"
@@ -24,8 +24,10 @@ ActiveRecord::Schema.define(version: 20181031124604) do
     t.string   "first_name"
     t.string   "last_name"
     t.boolean  "match"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "professor_id"
+    t.index ["professor_id"], name: "index_students_on_professor_id"
   end
 
 end
